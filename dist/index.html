@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <div class="header">
+        <h2>BattleShip</h2>
+        <p>This is a game project for "the odin project", where i'am suposed to follow Test Driven Development concept you can see this project gitRpo Here</p>
+    </div>
+    <div class="content">
+        <div class="container board" id="playerTwo"></div>
+        <div class="line"></div>
+        <div class="container board" id="playerOne"></div>
+        <div class="starting">
+            <div class="form">
+                <label for="name">Enter player name:</label>
+                <input type="text" name="name" id="nameInput" placeholder="PlayerOne">
+            </div>
+            <br>
+            <h3 id="order">Place Your Ships </h3>
+            <div class="container" id="playerStart">
+                <button id="direction">Horizontal</button>
+            </div>
+            
+            <button id="startGame">Start Game</button>
+            <span id="error"></span>
+            
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>

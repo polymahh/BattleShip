@@ -1,0 +1,120 @@
+/* body{
+    position: absolute;
+} */
+
+.header {
+    margin: 20px;
+    background-color: azure;
+    border: 1px solid grey;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.content {
+
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: rgb(204, 204, 204);
+    margin: 30px;
+    width: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+}
+
+.box {
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+}
+.boxset {
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    background-color: green;
+}
+
+#playerOne .box:hover{
+    font-size: 1.4em;
+    text-align: center;
+    background-color: rgb(248, 156, 35);
+    
+}
+
+.box.sunk{
+    content: 'X';
+    background-color: rgb(134, 12, 12);
+    
+}
+
+.line {
+    border: 1px solid gray;
+}
+
+.starting {
+    background-color: rgb(204, 204, 204);
+    border: 1px solid grey;
+    border-radius: 15px;
+    min-width: 90vw;
+    min-height: 75vh;
+    position: absolute;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px ;
+    
+}
+
+.form label {
+    font-size: large;
+    font-weight: bold;
+    color: rgb(37, 37, 37);
+
+}
+
+.form input {
+    /* width: 100%; */
+    font-family: inherit;
+    border-radius: 5px;
+    border: 1px solid #b3b3b3;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.starting .container{
+    margin: 0;
+
+}
+
+#startGame{
+    font-family: inherit;
+    border-radius: 5px;
+    border: 1px solid #202020;
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+#direction{
+    position: absolute;
+    left: 290px;
+    top: 90px;
+
+    font-family: inherit;
+    border-radius: 5px;
+    border: 1px solid #202020;
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
+
+}
+#error{
+    
+    color: red;
+}
