@@ -79,12 +79,8 @@ const playerTwoOptions = [
             isSunked :false
             }
         ]
-        
-        
-        
 
 ]
-
 
 let currentPlayer 
 let gamePlay = {
@@ -219,6 +215,7 @@ let gamePlay = {
                 this.errorMessage.innerText = "Choose your Name and Place Your Ships";
             }else {
                 console.log("fine")
+                this.playerOne.name = this.inputName.value
                 this.starting = false
                 this.render()
             }
