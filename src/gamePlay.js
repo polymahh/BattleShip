@@ -47,7 +47,7 @@ const playerTwoOptions = [
             size:5,
             location:[[1, 8], [2, 8], [3, 8], [4, 8], [5, 8]],
             direction:'hor',
-            damage:[[1, 8], [2, 8]],
+            damage:[],
             isSunked :false
             },
             {
@@ -123,7 +123,6 @@ let gamePlay = {
         this.setPlayerTwo()
         this.render()
         this.bindEvents()
-        console.log(this.boxs)
 
     },
 
@@ -148,13 +147,16 @@ let gamePlay = {
             let cords = e.target.id.split(',').map(e => Number(e))
             console.log(cords)
             let check = false
+            let checkTwo = false
+            
             if(this.playerTwo.boardHits.length > 0){
                check = this.checkBoardHits(cords, this.playerTwo)
-               console.log(check)
+               checkTwo = this.checkShipDamage(this.playerTwo, cords)
+               
             }
             
             
-            if (!this.starting && currentPlayer == this.playerTwo && !check){
+            if (!this.starting && currentPlayer == this.playerTwo && !check && !checkTwo){
                 
                 shipFire(currentPlayer, cords)
                 this.switchPlayer()
@@ -177,7 +179,7 @@ let gamePlay = {
             e.target.addEventListener("mouseleave" , e => {
                 shipBoxs.map(box => box.style.backgroundColor = '')
             })
-            console.log(result)
+            
         })
         
 
@@ -187,18 +189,16 @@ let gamePlay = {
             
             if(this.starting && e.target.id !="direction"  ){
                 if(this.playerOne.checkSpots(this.playerOne , cords, this.direction, this.size) ){
-                    console.log(cords)
+                    
                     this.playerOne.placeShip(this.playerOne , cords, this.direction, this.size)
-                    console.log(this.playerOne)
                     this.shipsToPlace.shift()
-                    console.log(this.shipsToPlace)
                     this.render()
                 }else {
                     this.errorMessage.innerText = 'Wrong Spot'
                 }
                     
             } else if(this.starting && e.target.id =="direction" ){
-                console.log(this.direction)
+                
                 if(this.direction == "hor"){
                     this.direction = "ver"
                     this.directionButton.innerText = "Vertical"
@@ -238,17 +238,33 @@ let gamePlay = {
             }else result = false
            })
         return result
+        // return player.boardHits.includes(cords)
+    },
+    checkShipDamage(player, cords){
+        let result = false
+        outer: for (let i = 0; i < player.ships.length; i++) {
+            const item = player.ships[i].damage
+            for (let k = 0; k < item.length; k++) {
+                if(item[k][0] === cords[0] && item[k][1] === cords[1]){
+                    result = true
+                    break outer
+                }
+                
+            }
+            
+        }
+        return result
     },
     playerTwoMove (){
         let num1 = Math.floor(Math.random() * 10);
         let num2 = Math.floor(Math.random() * 10);
-        console.log([num1,num2])
         let check = false
+        let checkTwo = false
         if(this.playerOne.boardHits.length > 0){
            check = this.checkBoardHits([num1, num2],this.playerOne)
-           console.log(check)
+           checkTwo = this.checkShipDamage(this.playerOne, [num1, num2])
         }
-        if(currentPlayer == this.playerOne && !check){
+        if(currentPlayer == this.playerOne && !check && !checkTwo){
             shipFire(currentPlayer, [num1, num2])
             this.switchPlayer()
         }else {

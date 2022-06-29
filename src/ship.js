@@ -27,7 +27,7 @@ function shipFire (player,hit){
         getHit(hitShip, hit)
     }else {
         player.boardHits.push(hit)
-        console.log(player.boardHits)
+        
     }
 
 }
