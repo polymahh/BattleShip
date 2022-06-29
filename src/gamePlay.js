@@ -142,6 +142,8 @@ let gamePlay = {
         this.order = document.getElementById('order')
         this.inputName = document.querySelector('#nameInput')
         this.errorMessage = document.querySelector('#error')
+        this.winnerBoard = document.querySelector('.winner')
+        this.winnerName = document.querySelector('.winnerName')
     
     },
 
@@ -320,6 +322,16 @@ let gamePlay = {
             this.renderMissedHits(this.playerOne, this.playerTwoContainer)
             this.renderHits(this.playerTwo, this.playerOneContainer)
             this.renderHits(this.playerOne, this.playerTwoContainer)
+            if(this.winCheck(this.playerOne)){
+                console.log('winner is '+ this.playerTwo.name)
+                this.winnerBoard.style.display = 'flex'
+                this.winnerName.innerText = this.playerTwo.name
+            }else if(this.winCheck(this.playerTwo)){
+                console.log('winner is '+ this.playerOne.name)
+                this.winnerBoard.style.display = 'flex'
+                this.winnerName.innerText = this.playerOne.name
+            }
+            
         }else {
         // this for ship plaicng and orders at the start of game
         if(this.shipsToPlace.length > 0){
@@ -392,6 +404,9 @@ let gamePlay = {
             })
             
         })
+    },
+    winCheck (player){
+        return player.ships.every(item => item.isSunked == true)
     }
 
 }

@@ -70,6 +70,29 @@
     
 }
 
+.winner {
+    display: none;
+    background-color: rgb(204, 204, 204,0);
+    border: 1px solid grey;
+    border-radius: 15px;
+    min-width: 90vw;
+    min-height: 75vh;
+    position: absolute;
+    text-align: center;
+    padding: 20px ;
+    justify-content: center;
+    
+}
+
+.winner div{
+    width: 300px;
+    height: 150px;
+    background-color: rgb(231, 231, 231);
+    border: 5px solid #05b614 ;
+    padding: 40px;
+    text-align: center;
+}
+
 .form label {
     font-size: large;
     font-weight: bold;
